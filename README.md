@@ -19,6 +19,15 @@ Paquete inicial para desarrollar front con **backbone** + **require** mediante i
 > npm install -g bower
 ```
 
+3.- Bajar los archivos de este repositorio. 
+
+Primero baja github de http://git-scm.com/downloads
+
+Luego escribes en un terminal posicionado en el directorio que desees los archivos lo siguiente:
+```
+> git clone https://github.com/daniel-llach/todomvc.git NOMBREdeTuProyecto
+```
+
 ## Instalar dependencias
 
 Una vez ya tengas todos los requisitos instalados solo debes ejecutar:
