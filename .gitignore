@@ -1,0 +1,14 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+
+# Bower Components
+bower_components/*
+
+# OSX data store
+.DS_Store
