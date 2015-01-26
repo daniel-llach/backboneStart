@@ -21,7 +21,7 @@ Paquete inicial para desarrollar front con **backbone** + **require** mediante i
 
 3.- Bajar los archivos de este repositorio. 
 
-Primero baja github de http://git-scm.com/downloads
+Primero baja el instalador de github de http://git-scm.com/downloads y lo instalas por medio de su interfaz.
 
 Luego escribes en un terminal posicionado en el directorio que desees los archivos lo siguiente:
 ```
