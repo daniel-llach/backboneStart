@@ -26,8 +26,8 @@ require.config({
 });
 
 require([
-    "views/appview"
-], function (AppView) {
+    "views/rectangleView"
+], function () {
 
     //var app = new AppView();
 
