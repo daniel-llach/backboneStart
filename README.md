@@ -6,4 +6,4 @@ Además el llamado a la app **rectangle** la dejé en el archivo *main.js* en el
 
 Respecto al estilo, trabajé un poco el archivo *style.less* para mejorar la gráfica por medio de clases dinámicas de **less** incluyendo un contexto 3d otorgándole la clases *perspective* y *rotateY* a *canvas*.
 
-Por último modifiqué la función **move** de *rectangleView* haciendo que le aumente o disminuya la posición x de cada *rectangle* y que además rote de manera aleatoria y dentro de un rango de -45 a 45º la perspectiva del *canvas* que contiene los objetos *rectangles* al hacer un click sobre cualquiera de los **rectangles**.
+Por último modifiqué la función **move** de *rectangleView* haciendo que le aumente o disminuya la posición x de cada *rectangle* y que además rote de manera aleatoria y dentro de un rango de -45 a 45º la perspectiva del *canvas* que contiene los objetos *rectangles* al hacer un mouseenter(no click) sobre cualquiera de los **rectangles**.
