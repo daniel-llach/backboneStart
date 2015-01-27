@@ -1,10 +1,9 @@
 /*global define*/
 define([
-    "backbone"
-], function (Backbone) {
+    "backbone",
+    "models/rectangle"
+], function (Backbone, Rectangle) {
     "use strict";
-
-    var Rectangle = Backbone.Model.extend({});
 
     var RectangleView = Backbone.View.extend({
 
@@ -25,7 +24,7 @@ define([
 
         setDimensions: function(){
             this.$el.css({
-                width: this.model.get('width') + 'px',
+                width: this.model.get('width') + '%',
                 height: this.model.get('height') + 'px'
             });
         },
@@ -33,8 +32,8 @@ define([
         setPosition: function(){
             var position = this.model.get('position');
             this.$el.css({
-                left: position.x,
-                top: position.y
+                left: parseInt(position.x) + '%',   // percent
+                top: position.y // px
             });
         },
 
@@ -43,44 +42,13 @@ define([
         },
 
         move: function(){
-            this.$el.css('left', this.$el.position().left + 10);
+            this.$el.css('left', this.$el.position().left + Math.floor( (Math.random()*600) - 300 ));
+            $('#canvas').css('transform', 'perspective(2000px) rotateY(' + Math.floor( (Math.random()*90) - 45 ) + 'deg)');
         }
 
     });
 
-    var models = [
-            new Rectangle({
-                width: 100,
-                height: 60,
-                position: {
-                    x: 300,
-                    y: 150
-                },
-                color: '#ff0000'
-            }),
-            new Rectangle({
-                width: 26,
-                height: 300,
-                position: {
-                    x: 500,
-                    y: 75
-                },
-                color: '#00ff00'
-            }),
-            new Rectangle({
-                width: 300,
-                height: 70,
-                position: {
-                    x: 310,
-                    y: 200
-                },
-                color: '#0000ff'
-            })
-    ];
 
-    _(models).each(function(model){
-        $('div#canvas').append(new RectangleView({model: model}).render().el);
-    });
-
+    return RectangleView;
 
 });
