@@ -42,8 +42,18 @@ define([
         },
 
         move: function(){
-            this.$el.css('left', this.$el.position().left + Math.floor( (Math.random()*600) - 300 ));
+            var position = this.model.get('position');  // toma atributo posicion del modelo
+            var currentPosX = parseInt( parseInt(position.x) + Math.floor( (Math.random()*30) - 15 ) ) + '%' ; // calcula nueva posición y setea en porcentajes
+            var currentPosY = parseInt(position.y); // calcula nueva posición en eje y en pixeles
+            var currentPosXModel = parseInt(currentPosX); // setea numero para modelo
+
+            this.model.set('position', { x: currentPosXModel, y: currentPosY } ); // actualiza atributos X e Y en modelo
+            this.$el.css('left', currentPosX); // mueve a nueva posición en X
+
+            console.log(currentPosX);
             $('#canvas').css('transform', 'perspective(2000px) rotateY(' + Math.floor( (Math.random()*90) - 45 ) + 'deg)');
+
+
         }
 
     });
