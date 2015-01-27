@@ -12,7 +12,7 @@ define([
         className: 'rectangle',
 
         events: {
-            'click': 'move'
+            'mouseenter': 'move'
         },
 
         render: function(){
