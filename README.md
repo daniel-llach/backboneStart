@@ -1,58 +1,9 @@
-# backboneStart
-Paquete inicial para desarrollar front con **backbone** + **require** mediante instalador de dependencias **bower**
+# rectangleMadness
 
-## Requisitos MACOSX:
+Tomando la rama *master* de *backboneStart* y el ejercicio **rectangles** de *codeacademy* (https://www.youtube.com/watch?v=vPW1inIsln4&list=PLQUMc4-0pHw6_vUL1ty11EvDIgydBI_BL&index=6) creé este ejercicio llamado **backboneMadness** en el cual nombré *rectangleView* a **appView** y separé el modelo *Rectangle* en un archivo independiente dentro de una nueva carpeta *models*. 
 
-1.- Tener instalado Homebrew, si no lo tienes abre un terminal y escribe:  (sin considerar los ">").
-```
-> ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-> brew update
-> brew doctor
-> export PATH="/usr/local/bin:$PATH"
-```
+Además el llamado a la app **rectangle** la dejé en el archivo *main.js* en el cual llama a la función *RectangleView*  pasandole la lista de objetos *models* con los datos de los **rectangles** por medio de un **each** de **underscore**.
 
-2.- Instalar **nodejs**, luego **npm** (node package manager) y luego **bower**. Todo esto en la consola sería así:
+Respecto al estilo, trabajé un poco el archivo *style.less* para mejorar la gráfica por medio de clases dinámicas de **less** incluyendo un contexto 3d otorgándole la clases *perspective* y *rotateY* a *canvas*.
 
-```
-> brew install node
-> sudo npm install npm -g
-> npm install -g bower
-```
-
-3.- Bajar los archivos de este repositorio. 
-
-Primero baja el instalador de github de http://git-scm.com/downloads y lo instalas por medio de su interfaz.
-
-Luego escribes en un terminal posicionado en el directorio que desees los archivos lo siguiente:
-```
-> git clone https://github.com/daniel-llach/todomvc.git NOMBREdeTuProyecto
-```
-
-## Instalar dependencias
-
-Una vez ya tengas todos los requisitos instalados solo debes ejecutar:
-
-```
-> bower install
-```
-
-Estas listo para comenzar a desarrollar tu SPA (single page app) en js/views/appview.js
-
-## Visualizar
-
-Si deseas visualizar en tu navegador favorito necesitas un servidor virtual, te recomiendo http-server de node, para instalarlo:
-
-```
-> npm install http-server -g
-```
-
-y luego lo ejecutas asi:
-```
-> node bin/http-server
-```
-
-ahora lo podrás visualizar en http://localhost:8080  
-
-
-
-Que lo disfrutes!
+Por último modifiqué la función **move** de *rectangleView* haciendo que le aumente o disminuya la posición x de cada *rectangle* y que además rote de manera aleatoria y dentro de un rango de -45 a 45º la perspectiva del *canvas* que contiene los objetos *rectangles* al hacer un mouseenter(no click) sobre cualquiera de los **rectangles**.
