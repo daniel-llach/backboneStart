@@ -16,7 +16,7 @@ define([
         },
 
         initialize: function(){
-            this.listenTo(this.model,'change',this.setCurrentPosition);
+            this.listenTo(this.model,'change:position',this.setCurrentPosition);
         },
 
         render: function(){
@@ -47,20 +47,20 @@ define([
 
         move: function(){
             this.model.move();
+            this.rotateCanvas();
         },
 
         setCurrentPosition: function(){
             var currentPosX = this.model.get('position').x + '%';
             this.$el.css('left', currentPosX); // mueve a nueva posición en X
+        },
 
-            console.log(currentPosX);
+        rotateCanvas: function(){
+            // gira el canvas en ejeY
             $('#canvas').css('transform', 'perspective(2000px) rotateY(' + Math.floor( (Math.random()*90) - 45 ) + 'deg)');
-
-
         }
 
     });
-
 
     return RectangleView;
 
