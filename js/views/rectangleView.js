@@ -1,9 +1,8 @@
 /*global define*/
 define([
     "backbone",
-    "models/rectangle",
     "text!templates/rectangle.html"
-], function (Backbone, Rectangle, rectangleTemplate) {
+], function (Backbone, rectangleTemplate) {
     "use strict";
 
     var RectangleView = Backbone.View.extend({
