@@ -10,4 +10,4 @@ Por último modifiqué la función **move** de *rectangleView* haciendo que le a
 
 ___
 
-Ahora función *move* toma atributo *x* de *position*, recalcula un nuevo valor y luego actualiza su valor en el modelo *Rectangle* al tiempo en que actualiza la posición gráfica por medio de jquery para realizar la animación de movimiento (por medio de css3).
+Ahora función *move* esta en el modelo y en la vista se llama asi **this.model.move();** al inicializar la vista por medio de un *change* ejecuta la función *setCurrentPosition* la cual toma el atributo *position.x* del objeto *rectangle* (el cual ya fue modificado por la función move) y lo setea agregándole un *%* y luego moviendo la pieza a su nueva posicion por medio de *jquery* (esto es animado mediante *css3*).
