@@ -53,8 +53,4 @@ require([
         $('div#canvas').append(new RectangleView({model: model}).render().el);
     });
 
-    // itera cada modelo otorgandole una vista SOMBRA y lo pinta en #canvas
-    rectangles.each(function(model){
-        $('div#canvas').append(new RectangleView({model: model}).render().el);
-    });
 });
