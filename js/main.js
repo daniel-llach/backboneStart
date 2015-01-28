@@ -27,60 +27,29 @@ require.config({
 
 require([
     "backbone",
-    "models/rectangle",
-    "views/rectangleView"
-], function (Backbone, Rectangle, RectangleView) {
+    "views/rectangleView",
+    "collections/rectangles"
+], function (Backbone, RectangleView, Rectangles) {
 
-    var models = [
-            new Rectangle({
-                width: 60,
-                height: 200,
-                position: {
-                    x: 13,
-                    y: 150
-                },
-                color: '#ff0000'
-            }),
-            new Rectangle({
-                width: 23,
-                height: 500,
-                position: {
-                    x: 26,
-                    y: 75
-                },
-                color: '#00ff00'
-            }),
-            new Rectangle({
-                width: 10,
-                height: 20,
-                position: {
-                    x: 2,
-                    y: 500
-                },
-                color: '#0000ff'
-            }),
-            new Rectangle({
-                width: 5,
-                height: 40,
-                position: {
-                    x: 8,
-                    y: 400
-                },
-                color: '#ffff00'
-            }),
-            new Rectangle({
-                width: 21,
-                height: 20,
-                position: {
-                    x: 15,
-                    y: 100
-                },
-                color: '#00ffff'
-            })
+    // llama json
+    var models = function (url){
+        $.ajax({
+            dataType: "json",
+            url: url,
+            async: false,
+            success: function(result){
+                rectangles = result;
+            }
+        });
+        return rectangles;
+    }('json/rectangles.json');
 
-    ];
+    // convierte json a collection de modelos
+    var rectangles = new Rectangles();
+    rectangles.reset(models.rectangles);
 
-    _(models).each(function(model){
+    // itera cada modelo otorgandole una vista y lo pinta en #canvas
+    rectangles.each(function(model){
         $('div#canvas').append(new RectangleView({model: model}).render().el);
     });
 });

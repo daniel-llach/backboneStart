@@ -59,11 +59,30 @@
   background-size: cover;
 }
 
+.translate (@x: -50%, @y: -50%)
+{
+    -webkit-transform: translate( @x, @y );
+    -moz-transform: translate( @x, @y );
+    -o-transform: translate( @x, @y );
+    transform: translate( @x, @y );
+}
+
+.center
+{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  .translate(-50%, -50%);
+
+}
+
 ////// CSS //////
 html
 {
     .gradient();
     .cover();
+    font-family: 'Open Sans';
 }
 
 body
@@ -79,7 +98,6 @@ h1{
     text-align: right;
     bottom: -80px;
     font-size: 40px;
-    font-family: 'Open Sans';
     font-weight: 300;
     border-top: 1px dashed #666;
     border-bottom: 100px solid #666;
@@ -105,5 +123,11 @@ h1{
     &:hover
     {
         .bright(0.7);
+    }
+
+    > span
+    {
+        .center();
+
     }
 }

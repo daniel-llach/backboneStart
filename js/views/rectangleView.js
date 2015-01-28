@@ -1,8 +1,9 @@
 /*global define*/
 define([
     "backbone",
-    "models/rectangle"
-], function (Backbone, Rectangle) {
+    "models/rectangle",
+    "text!templates/rectangle.html"
+], function (Backbone, Rectangle, rectangleTemplate) {
     "use strict";
 
     var RectangleView = Backbone.View.extend({
@@ -11,15 +12,19 @@ define([
 
         className: 'rectangle',
 
+        template: _.template(rectangleTemplate),
+
         events: {
             'mouseenter': 'move'
         },
 
         initialize: function(){
             this.listenTo(this.model,'change:position',this.setCurrentPosition);
+
         },
 
         render: function(){
+            this.$el.html(this.template(this.model.toJSON()));
             this.setDimensions();
             this.setPosition();
             this.setColor();
@@ -53,11 +58,13 @@ define([
         setCurrentPosition: function(){
             var currentPosX = this.model.get('position').x + '%';
             this.$el.css('left', currentPosX); // mueve a nueva posición en X
+            this.$el.html( this.template(this.model.toJSON()) ); // actualiza información del template
         },
 
         rotateCanvas: function(){
             // gira el canvas en ejeY
-            $('#canvas').css('transform', 'perspective(2000px) rotateY(' + Math.floor( (Math.random()*90) - 45 ) + 'deg)');
+            var randomDeg = Math.floor( (Math.random()*90) - 45 ) + 'deg';
+            $('#canvas').css('transform', 'perspective(2000px) rotateY(' + randomDeg + ')');
         }
 
     });
