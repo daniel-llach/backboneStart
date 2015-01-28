@@ -56,6 +56,7 @@ define([
             console.log(currentPosX);
             $('#canvas').css('transform', 'perspective(2000px) rotateY(' + Math.floor( (Math.random()*90) - 45 ) + 'deg)');
 
+
         }
 
     });
