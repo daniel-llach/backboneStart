@@ -15,6 +15,10 @@ define([
             'mouseenter': 'move'
         },
 
+        initialize: function(){
+            this.listenTo(this.model,'change',this.setCurrentPosition);
+        },
+
         render: function(){
             this.setDimensions();
             this.setPosition();
@@ -42,17 +46,15 @@ define([
         },
 
         move: function(){
-            var position = this.model.get('position');  // toma atributo posicion del modelo
-            var currentPosX = parseInt( parseInt(position.x) + Math.floor( (Math.random()*30) - 15 ) ) + '%' ; // calcula nueva posición y setea en porcentajes
-            var currentPosY = parseInt(position.y); // calcula nueva posición en eje y en pixeles
-            var currentPosXModel = parseInt(currentPosX); // setea numero para modelo
+            this.model.move();
+        },
 
-            this.model.set('position', { x: currentPosXModel, y: currentPosY } ); // actualiza atributos X e Y en modelo
+        setCurrentPosition: function(){
+            var currentPosX = this.model.get('position').x + '%';
             this.$el.css('left', currentPosX); // mueve a nueva posición en X
 
             console.log(currentPosX);
             $('#canvas').css('transform', 'perspective(2000px) rotateY(' + Math.floor( (Math.random()*90) - 45 ) + 'deg)');
-
 
         }
 
