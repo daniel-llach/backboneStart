@@ -19,7 +19,7 @@ define([
 
         initialize: function(){
             this.listenTo(this.model,'change:position',this.setCurrentPosition);
-
+            this.listenTo(this.model,'change:success', this.successRectangle);
         },
 
         render: function(){
@@ -50,8 +50,9 @@ define([
         },
 
         move: function(){
-            this.model.move();
-            this.rotateCanvas();
+            this.model.move(); // mueve rectangulo
+            this.model.changeposition(); // verifica coincidencia con sombra
+            this.rotateCanvas(); // gira aleatoriamente el canvas en 3d
         },
 
         setCurrentPosition: function(){
@@ -64,6 +65,20 @@ define([
             // gira el canvas en ejeY
             var randomDeg = Math.floor( (Math.random()*90) - 45 ) + 'deg';
             $('#canvas').css('transform', 'perspective(2000px) rotateY(' + randomDeg + ')');
+        },
+
+        successRectangle: function(){
+            var success = this.model.get('success');
+            if(success){
+                var colorSuccess = this.model.get('color');
+                this.$el.addClass('success');
+                this.$el.css({
+                    '-moz-box-shadow' : '0px 0px 30px ' + colorSuccess,
+                    '-webkit-box-shadow' : '0px 0px 30px ' + colorSuccess,
+                    'box-shadow' : '0px 0px 30px ' + colorSuccess
+                });
+            }
+
         }
 
     });

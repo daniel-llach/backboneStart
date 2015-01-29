@@ -115,6 +115,7 @@ h1{
     position: absolute;
     cursor: pointer;
     opacity: .9;
+    z-index: 1;
 
     .round();
     .shadow(8px 10px 13px #C1C1DB;);
@@ -129,5 +130,28 @@ h1{
     {
         .center();
 
+    }
+
+}
+
+.shadow
+{
+    position: absolute;
+    z-index: -1;
+    background-color: #666;
+
+    .round();
+}
+
+.success
+{
+    background-color: #fff !important;
+    z-index: 0 !important;
+    color: #fff !important;
+    opacity: 1;
+
+    &:hover
+    {
+        .bright(1);
     }
 }

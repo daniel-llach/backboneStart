@@ -28,8 +28,9 @@ require.config({
 require([
     "backbone",
     "views/rectangleView",
+    "views/shadowView",
     "collections/rectangles"
-], function (Backbone, RectangleView, Rectangles) {
+], function (Backbone, RectangleView, ShadowView, Rectangles) {
 
     // llama json
     var models = function (url){
@@ -55,6 +56,6 @@ require([
 
     // itera cada modelo otorgandole una vista SOMBRA y lo pinta en #canvas
     rectangles.each(function(model){
-        $('div#canvas').append(new RectangleView({model: model}).render().el);
+        $('div#canvas').append(new ShadowView({model: model}).render().el);
     });
 });
