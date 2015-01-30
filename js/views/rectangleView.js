@@ -52,19 +52,12 @@ define([
         move: function(){
             this.model.move(); // mueve rectangulo
             this.model.changeposition(); // verifica coincidencia con sombra
-            this.rotateCanvas(); // gira aleatoriamente el canvas en 3d
         },
 
         setCurrentPosition: function(){
             var currentPosX = this.model.get('position').x + '%';
             this.$el.css('left', currentPosX); // mueve a nueva posición en X
             this.$el.html( this.template(this.model.toJSON()) ); // actualiza información del template
-        },
-
-        rotateCanvas: function(){
-            // gira el canvas en ejeY
-            var randomDeg = Math.floor( (Math.random()*90) - 45 ) + 'deg';
-            $('#canvas').css('transform', 'perspective(2000px) rotateY(' + randomDeg + ')');
         },
 
         successRectangle: function(){

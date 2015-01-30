@@ -27,10 +27,12 @@ require.config({
 
 require([
     "backbone",
+    "collections/rectangles",
     "views/rectangleView",
     "views/shadowView",
-    "collections/rectangles"
-], function (Backbone, RectangleView, ShadowView, Rectangles) {
+    "models/perspective",
+    "views/perspectiveView"
+], function (Backbone, Rectangles, RectangleView, ShadowView, Perspective, PerspectiveView) {
 
     // llama json
     var models = function (url){
@@ -58,4 +60,10 @@ require([
     rectangles.each(function(model){
         $('div#canvas').append(new ShadowView({model: model}).render().el);
     });
+
+    // perspectiveControl
+    var perspective = new Perspective();
+    new PerspectiveView({model:perspective});
+    console.log(PerspectiveView);
+
 });
