@@ -130,8 +130,18 @@ h1{
 
     > span
     {
-        .center();
+        position: relative;
+        z-index: 1;
 
+        .center();
+    }
+
+    > .region
+    {
+        position: relative;
+        float: left;
+        width: 50%;
+        z-index: 2;
     }
 
 }
